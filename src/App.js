@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+import Header from './components/Header';
+import Form from './components/Form';
+import CardList from './components/CardList';
+import React from 'react';
+import './App.scss';
+const titulo="Usuarios github"
+class App extends React.Component {
 
-function App() {
+  state={
+    profiles:[],
+  }
+  addNewProfile=(profileData)=>{
+    console.log("Add New");
+    this.setState(prevState=>({
+      //se concatena prevState con profilData
+      profiles:[...prevState.profiles,profileData]
+    }));
+  }
+  render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Mi aplicaión <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="App">
+        <Header title={titulo} />
+        <Form onSubmit={this.addNewProfile}/>
+        <CardList profiles={this.state.profiles}/>
+      </div>
     </div>
   );
+  }
 }
 
 export default App;
