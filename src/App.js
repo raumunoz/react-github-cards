@@ -22,7 +22,7 @@ class App extends React.Component {
     <div>
       <div className="App">
         <Header title={titulo} />
-        <Form onSubmit={this.addNewProfile}/>
+        <Form onAdd={this.addNewProfile}/>
         <CardList profiles={this.state.profiles}/>
       </div>
     </div>
